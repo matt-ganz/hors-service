@@ -1,0 +1,16 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/Users/brebis717/Documents/workspace/hors-service/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_fb0d143c"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/brebis717/Documents/workspace/hors-service/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_16610bda"
+  }
+]
