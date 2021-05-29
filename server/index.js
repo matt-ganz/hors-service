@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const Post = require('./models/post');
 const express = require('express');
 const consola = require('consola');
@@ -12,6 +15,13 @@ config.dev = process.env.NODE_ENV !== 'production';
 // Init Nuxt.js
 const nuxt = new Nuxt(config);
 const { host, port } = nuxt.options.server;
+
+const username = process.env.username;
+const pwd = process.env.pwd;
+const server = process.env.server;
+const db = process.env.db;
+
+const dbURI = `mongodb+srv://${username}:${pwd}@${server}/${db}?retryWrites=true&w=majority`;
 
 async function start() {
     // Build only in dev mode
@@ -32,8 +42,6 @@ async function start() {
 
 start();
 
-// connection string to connect to mongodb
-const dbURI = '';
 mongoose
     .connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => {
