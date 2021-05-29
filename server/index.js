@@ -33,7 +33,7 @@ async function start() {
 start();
 
 // connection string to connect to mongodb
-const dbURI = 'mongodb+srv://mganz:ndj@mena@hors-service.fkwno.mongodb.net/hors-service?retryWrites=true&w=majority';
+const dbURI = '';
 mongoose
     .connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => {
