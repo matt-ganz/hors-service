@@ -48,7 +48,7 @@
         </v-card-title>
         <v-card class="mb-8" v-for="post in posts.data" :key="post.id">
           <v-card-text>
-            {{post.text}}
+            {{post.body}}
           </v-card-text>
         </v-card>
       </v-card>
