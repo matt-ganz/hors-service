@@ -1,17 +1,29 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+const Post = require('./models/post');
 const express = require('express');
 const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
 const app = express();
+const mongoose = require('mongoose');
 
 // Import and set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = process.env.NODE_ENV !== 'production';
 
-async function start() {
-    // Init Nuxt.js
-    const nuxt = new Nuxt(config);
-    const { host, port } = nuxt.options.server;
+// Init Nuxt.js
+const nuxt = new Nuxt(config);
+const { host, port } = nuxt.options.server;
 
+const username = process.env.username;
+const pwd = process.env.pwd;
+const server = process.env.server;
+const db = process.env.db;
+
+const dbURI = `mongodb+srv://${username}:${pwd}@${server}/${db}?retryWrites=true&w=majority`;
+
+async function start() {
     // Build only in dev mode
     if (config.dev) {
         const builder = new Builder(nuxt);
@@ -22,9 +34,6 @@ async function start() {
     // Render every route with Nuxt.js
     app.use(nuxt.render);
 
-    // Listen
-    app.listen(port, host);
-
     consola.ready({
         message: `Server listening on http://${host}:${port}`,
         badge: true
@@ -33,17 +42,37 @@ async function start() {
 
 start();
 
+mongoose
+    .connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => {
+        console.log(`connected to db`);
+        app.listen(port, host); // listen
+        }
+    )
+    .catch(err => console.log(err));
+
 app.get('/isAlive', async (req, res) => {
     res.send('i am alive');
 });
 
-app.get('/posts', async(req, res) => {
-    posts = [
-        {text: "POST 1", id: 1},
-        {text: "POST 2", id: 2},
-        {text: "POST 3", id: 3},
-        {text: "POST 4", id: 4},
-        {text: "POST 5", id: 5}
-    ]
-    res.send(posts);
+app.get('/testSave', (req, res) => {
+    const post = new Post({
+        body: 'Fifth post in DB'
+    });
+    post
+        .save()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => console.log(err));
+});
+
+app.get('/posts', (req, res) => {
+    Post
+        .find()
+        .sort({createdAt: -1})
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => console.log(err));
 })

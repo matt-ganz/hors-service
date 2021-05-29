@@ -3,6 +3,7 @@
 module.exports = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  telemetry: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -47,7 +48,7 @@ module.exports = {
   modules: ['@nuxtjs/axios'
   ],
   axios: {
-    baseURL: process.env.API_URL
+    // baseURL: process.env.API_URL
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
