@@ -2,15 +2,15 @@
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "/Users/brebis717/Documents/workspace/hors-service/pages/inspire.vue",
+    "component": "/Users/matthewganz/Documents/workspace/hors-service/pages/inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_fb0d143c"
+    "_name": "_7b1935dc"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/brebis717/Documents/workspace/hors-service/pages/index.vue",
+    "component": "/Users/matthewganz/Documents/workspace/hors-service/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_16610bda"
+    "_name": "_6a048254"
   }
 ]
