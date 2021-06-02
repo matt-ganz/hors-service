@@ -4,3 +4,10 @@ export const actions = {
         return res;
     }
 }
+
+export const mutations = {
+    async savePost(state, data) {
+        let res = await this.$axios.post('/posts', {post: data});
+        return res;
+    }
+}

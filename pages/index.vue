@@ -34,7 +34,7 @@
             nuxt
             @click="onSubmit()"
           >
-            Confess
+            Purge
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -58,10 +58,6 @@
 <script>
 export default {
   components: {},
-  // async asyncData({$axios}) {
-  //   let {data} = await $axios.get("/posts");
-  //   return {posts: data.data}
-  // },
   data: () => ({
     posts:[]
   }),
@@ -70,15 +66,24 @@ export default {
   },
   methods: {
     async getPosts() {
-      console.log('getPosts()');
       let res = await this.$store.dispatch('getPosts');
       this.posts = res;
     },
-    onSubmit: function(){
-      // send message to server
-      // play sound
-      this.playSound();
-      // refresh messages
+    async savePost(payload) {
+      let res = await this.$store.commit('savePost', payload)
+      return res;
+    },
+    onSubmit() {
+      const input = document.querySelector('textarea').value;
+      const res = this.savePost(input); // send message to server
+      res 
+        .then((res) => {
+          this.playSound(); // play sound
+          this.getPosts(); // refresh messages
+        })
+        .catch((err) => {
+          console.log(`Error saving new post: ${err}`);
+        });
     },
     playSound: function(){
         var playPromise = document.querySelector('audio').play();
