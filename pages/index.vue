@@ -3,21 +3,19 @@
     <v-col cols="6" sm="5" md="6">
       <v-card>
         <v-card-title class="headline">
-          OUT-OF-SERVICE
+          <i>Out-of-Service</i>
         </v-card-title>
         <v-card-text>
           <audio src="~/assets/gong.wav" crossorigin="anonymous"></audio>
           <p>
-            I can no longer be of service to you, I am malfunctioning. All avenues
-            available to the stable person are no longer viable options to me. Through
-            this anonymous confession I purge myself of any ill will so I can continue
-            on through my day/night without overheating.
+            I am malfunctioning. All avenues available to the stable person are no longer 
+            viable options for me. Active listening, compromise and empathy
+            -- ALL, out the window. Communication has deteriorated to such a point that all I can do is vent
+            my most raw thoughts here in the hopes that flushing it down the abyss of anonymity will purge me of
+            my demons. Where therapy fails, a virtual word toilet will serve as a sufficient replacement. 
           </p>
           <p>
-            Though I cannot tell you to your face I will commit my comments
-            below in the hopes that it will relieve me of some of my stress. I promise
-            nothing to you and, as usual, expect nothing in return -- because that is all that
-            I have ever gotten...and what I now come to expect.
+            When it comes to you, and me-and-you, this is me at my most merciful.  
           </p>
           <v-textarea
             auto-grow
@@ -30,7 +28,7 @@
         <v-card-actions>
           <v-spacer />
           <v-btn
-            color="primary"
+            color="normal"
             nuxt
             @click="onSubmit()"
           >
@@ -46,11 +44,13 @@
         <v-card-title class="headline">
           CONFESSIONS
         </v-card-title>
-        <v-card class="mb-8" v-for="post in posts.data" :key="post.id">
-          <v-card-text>
-            {{post.body}}
-          </v-card-text>
-        </v-card>
+        <v-list max-height="85vh" class="overflow-y-auto">
+          <v-card class="mb-8" v-for="post in posts.data" :key="post.id">
+            <v-card-text>
+              {{post.body}}
+            </v-card-text>
+          </v-card>
+        </v-list>
       </v-card>
     </v-col>
   </v-row>
