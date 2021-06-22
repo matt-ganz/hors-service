@@ -7,12 +7,16 @@ const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
 const app = express();
 const mongoose = require('mongoose');
+const xss = require('xss-clean');
+
+
 app.use(
     express.urlencoded({
       extended: true
     })
   )
 app.use(express.json())
+app.use(xss());
 
 // Import and set Nuxt.js options
 const config = require('../nuxt.config.js');
@@ -70,14 +74,17 @@ app.get('/posts', (req, res) => {
         .catch((err) => console.log(err));
 })
 
-app.post('/posts', (req, res) => {
-    const post = new Post({
-        body: req.body.post
-    });
-    post
-        .save()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => console.log(err));
-});
+app.post(
+    '/posts', 
+    (req, res) => {
+        const post = new Post({
+            body: req.body.post.trim()
+        });
+        post
+            .save()
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((err) => console.log(err));
+    }
+);

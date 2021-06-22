@@ -16,7 +16,11 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }} piju-aro@protonmail.com</span>
+      <v-col
+        cols="12"
+        class="text-right">
+        <span class="caption">&copy; {{ new Date().getFullYear() }} <a href="mailto:piju-aro@protonmail.com">piju-aro@protonmail.com</a></span>
+      </v-col>
     </v-footer>
   </v-app>
 </template>

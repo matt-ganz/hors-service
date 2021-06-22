@@ -20,6 +20,7 @@
                 When it comes to you, and me-and-you, this is me at my most merciful.  
               </p>
               <v-textarea
+                id="zing"
                 auto-grow
                 autofocus
                 background-color="#333"
@@ -81,17 +82,17 @@ export default {
       return res;
     },
     onSubmit() {
-      const input = document.querySelector('textarea').value.textContent;
-      console.log(input);
-      // const res = this.savePost(input); // send message to server
-      // res 
-      //   .then((res) => {
-      //     this.playSound(); // play sound
-      //     this.getPosts(); // refresh messages
-      //   })
-      //   .catch((err) => {
-      //     console.log(`Error saving new post: ${err}`);
-      //   });
+      const input = document.querySelector('textarea').value;
+      const res = this.savePost(input); // send message to server
+      
+      res 
+        .then((res) => {
+          this.playSound(); // play sound
+          this.getPosts(); // refresh messages
+        })
+        .catch((err) => {
+          console.log(`Error saving new post: ${err}`);
+        });
     },
     playSound: function(){
         var playPromise = document.querySelector('audio').play();
