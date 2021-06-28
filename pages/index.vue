@@ -5,20 +5,20 @@
         <v-col cols="12" md="6">
           <v-card>
             <v-card-title class="headline">
-              <i>Out-of-Service</i>
+              <i>When Therapy Fails</i>
             </v-card-title>
             <v-card-text>
               <audio src="~/assets/gong.wav" crossorigin="anonymous"></audio>
               <p>
-                I am malfunctioning. All avenues available to the stable person are no longer 
-                viable options for me. Active listening, compromise and empathy
-                -- ALL, out the window. Communication has deteriorated to such a point that all I can do is vent
-                my most raw thoughts here in the hopes that flushing it down the abyss of anonymity will purge me of
-                my demons. Where therapy fails, a virtual word toilet will serve as a sufficient replacement. 
+                I created this site for me. I've been to therapy on and off for years, with my spouse and/or
+                by myself. It saved my marriage many times. But over time, I found that I wasn't being
+                entirely honest in those sessions. I thought I was being honest but sometimes I'm the most honest
+                when I'm scared or late at night. 
               </p>
               <p>
-                When it comes to you, and me-and-you, this is me at my most merciful.  
-              </p>
+                Where therapy fails to address your feelings as they occur, this tool helps you
+                let the pain out when it happens....in a safe and anonymous way. 
+                </p>
               <v-textarea
                 id="zing"
                 auto-grow
@@ -47,7 +47,7 @@
           </div>
           <v-card>
             <v-card-title class="headline">
-              CONFESSIONS
+              <i>Confessions</i>
             </v-card-title>
             <v-list max-height="85vh" class="overflow-y-auto">
               <v-card class="mb-8" v-for="post in posts.data" :key="post.id">
@@ -81,6 +81,11 @@ export default {
       let res = await this.$store.commit('savePost', payload)
       return res;
     },
+    clear(){
+      const input = document.querySelector('textarea');
+      input.focus();
+      input.value = '';
+    },
     onSubmit() {
       const input = document.querySelector('textarea').value;
       const res = this.savePost(input); // send message to server
@@ -89,6 +94,7 @@ export default {
         .then((res) => {
           this.playSound(); // play sound
           this.getPosts(); // refresh messages
+          this.clear();
         })
         .catch((err) => {
           console.log(`Error saving new post: ${err}`);
