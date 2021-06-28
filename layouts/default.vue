@@ -5,7 +5,7 @@
       fixed
       app
     >
-      HORS SERVICE
+      HORS SERVICE (French: Out-of-Service)
     </v-app-bar>
     <v-main>
       <v-container>
