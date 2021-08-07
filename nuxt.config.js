@@ -10,7 +10,7 @@ module.exports = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - theraflee,
+    titleTemplate: '%s - theraflee',
     title: 'therafail',
     htmlAttrs: {
       lang: 'en'
