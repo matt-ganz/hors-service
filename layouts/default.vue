@@ -5,7 +5,7 @@
       fixed
       app
     >
-      HORS SERVICE (French: Out-of-Service)
+      THERAFAIL
     </v-app-bar>
     <v-main>
       <v-container>
