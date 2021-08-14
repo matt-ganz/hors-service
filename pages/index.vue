@@ -8,7 +8,7 @@
               <i>When Therapy Fails</i>
             </v-card-title>
             <v-card-text>
-              <audio src="~/assets/gong.wav" crossorigin="anonymous"></audio>
+              <audio ref="gong" src="~/assets/gong.wav" crossorigin="anonymous"></audio>
               <p>
                 I created this site for me. I've been to therapy on and off for years, with my spouse and/or
                 by myself. It saved my marriage many times. But over time, I found that I wasn't being
@@ -20,7 +20,7 @@
                 let the pain out when it happens....in a safe and anonymous way. 
                 </p>
               <v-textarea
-                id="zing"
+                ref="confession"
                 auto-grow
                 autofocus
                 background-color="#333"
@@ -83,7 +83,9 @@ export default {
     },
     clear(){
       this.confession = "";
-      document.querySelector('textarea').focus()
+    },
+    focusInput() {
+      this.$refs.confession.focus();
     },
     onSubmit() {
       this
@@ -92,10 +94,11 @@ export default {
           this.playSound(); 
           this.getPosts();
           this.clear();
+          this.focusInput();
         });
     },
     playSound: function(){
-        var playPromise = document.querySelector('audio').play();
+        var playPromise = this.$refs.gong.play();
         // In browsers that don’t yet support this functionality,
         // playPromise won’t be defined.
         if (playPromise !== undefined) {
