@@ -78,19 +78,21 @@ export default {
       this.posts = res;
     },
     async savePost(payload) {
-      let res = await this.$store.commit('savePost', payload)
-      this.getPosts(); // refresh messages
-      this.clear();
+      let res = await this.$store.commit('savePost', payload);
+      return res;
     },
     clear(){
-      const input = document.querySelector('textarea');
-      input.value = '';
+      this.confession = "";
+      document.querySelector('textarea').focus()
     },
     onSubmit() {
-      const input = document.querySelector('textarea').value;
-      const res = this.savePost(input); // send message to server
-
-      this.playSound(); 
+      this
+        .savePost(this.confession.trim())
+        .then((result) => {
+          this.playSound(); 
+          this.getPosts();
+          this.clear();
+        });
     },
     playSound: function(){
         var playPromise = document.querySelector('audio').play();
