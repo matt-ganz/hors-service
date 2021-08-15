@@ -81,7 +81,7 @@ app.post(
             body: req.body.post.trim()
         });
         post
-            .save({w:majority})
+            .save()
             .then((result) => {
                 res.send(result);
             })
