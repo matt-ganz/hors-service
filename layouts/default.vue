@@ -19,7 +19,7 @@
       <v-col
         cols="12"
         class="text-right">
-        <span class="caption">&copy; {{ new Date().getFullYear() }} <a href="mailto:piju-aro@protonmail.com">piju-aro@protonmail.com</a></span>
+        <span class="caption">&copy; {{ new Date().getFullYear() }} <a href="mailto:miju-aro@protonmail.com">miju-aro@protonmail.com</a></span>
       </v-col>
     </v-footer>
   </v-app>
