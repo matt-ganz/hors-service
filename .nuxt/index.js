@@ -13,9 +13,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_3bb4cdb4 from 'nuxt_plugin_plugin_3bb4cdb4' // Source: ./components/plugin.js (mode: 'all')
-import nuxt_plugin_plugin_f3ef1a8c from 'nuxt_plugin_plugin_f3ef1a8c' // Source: ./vuetify/plugin.js (mode: 'all')
-import nuxt_plugin_axios_6ef6e6ca from 'nuxt_plugin_axios_6ef6e6ca' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_plugin_5cbea1ab from 'nuxt_plugin_plugin_5cbea1ab' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_plugin_97e60bba from 'nuxt_plugin_plugin_97e60bba' // Source: ./vuetify/plugin.js (mode: 'all')
+import nuxt_plugin_axios_2a44957e from 'nuxt_plugin_axios_2a44957e' // Source: ./axios.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -80,7 +80,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"titleTemplate":"%s - theraflee","title":"therafail","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"titleTemplate":"%s","title":"","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -209,16 +209,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_3bb4cdb4 === 'function') {
-    await nuxt_plugin_plugin_3bb4cdb4(app.context, inject)
+  if (typeof nuxt_plugin_plugin_5cbea1ab === 'function') {
+    await nuxt_plugin_plugin_5cbea1ab(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_f3ef1a8c === 'function') {
-    await nuxt_plugin_plugin_f3ef1a8c(app.context, inject)
+  if (typeof nuxt_plugin_plugin_97e60bba === 'function') {
+    await nuxt_plugin_plugin_97e60bba(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_6ef6e6ca === 'function') {
-    await nuxt_plugin_axios_6ef6e6ca(app.context, inject)
+  if (typeof nuxt_plugin_axios_2a44957e === 'function') {
+    await nuxt_plugin_axios_2a44957e(app.context, inject)
   }
 
   // Lock enablePreview in context
@@ -230,6 +230,13 @@ async function createApp(ssrContext, config = {}) {
 
   // Wait for async component to be resolved first
   await new Promise((resolve, reject) => {
+    // Ignore 404s rather than blindly replacing URL in browser
+    if (process.client) {
+      const { route } = router.resolve(app.context.route.fullPath)
+      if (!route.matched.length) {
+        return resolve()
+      }
+    }
     router.replace(app.context.route.fullPath, resolve, (err) => {
       // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
       if (!err._isRouter) return reject(err)
