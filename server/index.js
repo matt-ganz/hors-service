@@ -26,6 +26,7 @@ config.dev = process.env.NODE_ENV !== 'production';
 const nuxt = new Nuxt(config);
 const { host, port } = nuxt.options.server;
 
+console.log('MATT: ' + process.env.pwd);
 const username = process.env.username;
 const pwd = process.env.pwd;
 const server = process.env.server;

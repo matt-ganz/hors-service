@@ -1,12 +1,11 @@
 <template>
-  <v-app dark>
-    <v-app-bar
+  <v-app>
+    <!-- <v-app-bar
       :clipped-left="clipped"
       fixed
       app
     >
-      THERAFAIL
-    </v-app-bar>
+    </v-app-bar> -->
     <v-main>
       <v-container>
         <nuxt />

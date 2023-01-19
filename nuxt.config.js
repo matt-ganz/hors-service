@@ -10,8 +10,8 @@ module.exports = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - theraflee',
-    title: 'therafail',
+    titleTemplate: '%s',
+    title: '',
     htmlAttrs: {
       lang: 'en'
     },
@@ -55,7 +55,7 @@ module.exports = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true
+      dark: false
     }
   },
 

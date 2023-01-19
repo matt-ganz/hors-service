@@ -5,25 +5,29 @@
         <v-col cols="12" md="6">
           <v-card>
             <v-card-title class="headline">
-              <i>When Therapy Fails</i>
+              <!-- <i>Therapy isn't for everyone</i> -->
             </v-card-title>
             <v-card-text>
               <audio ref="gong" src="~/assets/gong.wav" crossorigin="anonymous"></audio>
               <p>
-                I created this site for me. I've been to therapy on and off for years, with my spouse and/or
-                by myself. It saved my marriage many times. But over time, I found that I wasn't being
-                entirely honest in those sessions. I thought I was being honest but sometimes I'm the most honest
-                when I'm scared or late at night. 
+                <b>Therapy isn't for everyone.</b> People can't afford it or make time for it. 
+                Some things are too private or shameful to say out loud. There are many barriers 
+                to effective therapy. 
               </p>
               <p>
-                Where therapy fails to address your feelings as they occur, this tool helps you
-                let the pain out when it happens....in a safe and anonymous way. 
-                </p>
+                This tool has no barriers. The service this site provides is allowing you to say those things 
+                that you want to say...so badly...out loud. The things you cannot say to anyone, or are afraid to; 
+                if you have no one to say it to, or if the truth is too painful. 
+              </p>
+              <p>
+                Unexpressed feelings are trapped inside you, eating away at you. When you let it out, 
+                they are gone for the time being. This is a tool for temporary relief. 
+              </p>
               <v-textarea
                 ref="confession"
                 auto-grow
                 autofocus
-                background-color="#333"
+                background-color="#ccc"
                 color="#fff"
                 v-model="confession">
               </v-textarea>
@@ -37,7 +41,7 @@
                 @click="onSubmit()"
                 :disabled="!confession.length"
               >
-                Purge
+                Expel
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -45,10 +49,10 @@
         <v-col cols="12" md="6">
           <div class="text-center">
           </div>
-          <v-card>
-            <v-card-title class="headline">
+          <v-card flat color="transparent">
+            <!-- <v-card-title class="headline">
               <i>Confessions</i>
-            </v-card-title>
+            </v-card-title> -->
             <v-list max-height="85vh" class="overflow-y-auto">
               <v-card class="mb-8" v-for="post in posts.data" :key="post.id">
                 <v-card-text>
