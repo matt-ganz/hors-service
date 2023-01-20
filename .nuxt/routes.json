@@ -1,0 +1,14 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/Users/matthewganz/workspace/hors-service/pages/inspire.vue",
+    "chunkName": "pages/inspire"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/matthewganz/workspace/hors-service/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
