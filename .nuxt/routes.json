@@ -3,12 +3,14 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/matthewganz/workspace/hors-service/pages/inspire.vue",
-    "chunkName": "pages/inspire"
+    "chunkName": "pages/inspire",
+    "_name": "_0b4dc005"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/matthewganz/workspace/hors-service/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_6af782bd"
   }
 ]
